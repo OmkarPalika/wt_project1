@@ -1,7 +1,6 @@
 <?php
 include("../scripts/format_date.php");
 require_once "../scripts/db_connect.php";
-require_once "../scripts/redis_connect.php";
 session_start();
 
 if (!isset($_GET["user_id"])) {

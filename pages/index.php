@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION["loggedin"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Search Profiles</title>
+    <title>Circle Up</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION["loggedin"])) {
             <?php include("../components/right-bar/index.php"); ?>
         </aside>
     </div>
+    
+    <?php include("../components/footer.php"); ?> 
 </body>
 
 </html>

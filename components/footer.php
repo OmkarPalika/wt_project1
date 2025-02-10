@@ -1,0 +1,1 @@
+<p> Copyrights reserved, 2025. </p> 

@@ -1,51 +1,47 @@
 <?php
 include("components/trend-card.php");
 
-$trendQuery = "SELECT COUNT(post_id), category.category_id, category.category_title FROM post INNER JOIN category ON post.post_category_id = category.category_id WHERE post_date >= NOW() - INTERVAL 1 day GROUP BY post_category_id ORDER BY COUNT(post_id) DESC LIMIT 3;";
-$stmt = $link->prepare($trendQuery);
-$stmt->execute();
-$trendData = $stmt->get_result();
-
-if ($trendData->num_rows == 3) {
-    echo TrendCard($trendData, "Bügünün Trendleri");
-    exit();
+function getTrendingCategories($link, $interval = null) {
+    $timeConstraint = $interval 
+        ? "WHERE post_date >= NOW() - INTERVAL 1 $interval" 
+        : "";
+    
+    $query = "
+        SELECT 
+            COUNT(post_id) as post_count,
+            category.category_id,
+            category.category_title
+        FROM post
+        INNER JOIN category ON post.post_category_id = category.category_id
+        $timeConstraint
+        GROUP BY post_category_id
+        ORDER BY COUNT(post_id) DESC
+        LIMIT 3
+    ";
+    
+    $stmt = $link->prepare($query);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 
-$trendQuery = "SELECT COUNT(post_id), category.category_id, category.category_title FROM post INNER JOIN category ON post.post_category_id = category.category_id WHERE post_date >= NOW() - INTERVAL 1 week GROUP BY post_category_id ORDER BY COUNT(post_id) DESC LIMIT 3;";
-$stmt = $link->prepare($trendQuery);
-$stmt->execute();
-$trendData = $stmt->get_result();
+// Time periods to check, in order of priority
+$timePeriods = [
+    'day' => 'Today\'s Trends',
+    'week' => 'Weekly Trends',
+    'month' => 'Monthly Trends',
+    'year' => 'Yearly Trends'
+];
 
-if ($trendData->num_rows == 3) {
-    echo TrendCard($trendData, "Haftanın Trendleri");
-    exit();
+// Try each time period until we find one with enough data
+foreach ($timePeriods as $period => $title) {
+    $trendData = getTrendingCategories($link, $period);
+    if ($trendData->num_rows == 3) {
+        echo TrendCard($trendData, $title);
+        exit();
+    }
 }
 
-$trendQuery = "SELECT COUNT(post_id), category.category_id, category.category_title FROM post INNER JOIN category ON post.post_category_id = category.category_id WHERE post_date >= NOW() - INTERVAL 1 month GROUP BY post_category_id ORDER BY COUNT(post_id) DESC LIMIT 3;";
-$stmt = $link->prepare($trendQuery);
-$stmt->execute();
-$trendData = $stmt->get_result();
-
-if ($trendData->num_rows == 3) {
-    echo TrendCard($trendData, "Ayın Trendleri");
-    exit();
-}
-
-$trendQuery = "SELECT COUNT(post_id), category.category_id, category.category_title FROM post INNER JOIN category ON post.post_category_id = category.category_id WHERE post_date >= NOW() - INTERVAL 1 year GROUP BY post_category_id ORDER BY COUNT(post_id) DESC LIMIT 3;";
-$stmt = $link->prepare($trendQuery);
-$stmt->execute();
-$trendData = $stmt->get_result();
-
-if ($trendData->num_rows == 3) {
-    echo TrendCard($trendData, "Yılın Trendleri");
-    exit();
-}
-
-
-$trendQuery = "SELECT COUNT(post_id), category.category_id, category.category_title FROM post INNER JOIN category ON post.post_category_id = category.category_id GROUP BY post_category_id ORDER BY COUNT(post_id) DESC LIMIT 3;";
-$stmt = $link->prepare($trendQuery);
-$stmt->execute();
-$trendData = $stmt->get_result();
-
-echo TrendCard($trendData, "Trendler Kategoriler");
+// Fallback to all-time trends if no period has enough data
+$trendData = getTrendingCategories($link);
+echo TrendCard($trendData, 'Trending Categories');
 ?>

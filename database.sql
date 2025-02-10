@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+05:30";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Veritabanı: `selcuksozluk`
+-- Veritabanı: `wtproject`
 --
 
 -- --------------------------------------------------------
@@ -37,11 +37,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_title`) VALUES
-(1, 'gündem'),
-(2, 'teknoloji'),
-(3, 'politika'),
-(4, 'eğitim'),
-(5, 'müzik');
+(1, 'agenda'),
+(2, 'technology'),
+(3, 'politics'),
+(4, 'education'),
+(5, 'music');
 
 -- --------------------------------------------------------
 
@@ -63,13 +63,12 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `post_title`, `post_image`, `user_id`, `post_category_id`, `post_date`) VALUES
-(1, 'Mollit ut labore nostrud pariatur veniam pariatur ullamco labore et est officia duis nisi nostrud. Dolore sit do laborum nulla laboris Lorem. Cupidatat consequat aliqua voluptate consectetur cupidatat nostrud.', '', 6, 1, '2022-05-19 12:27:56'),
-(2, 'Id minim nulla Lorem eu occaecat cillum. Voluptate officia in occaecat sunt mollit ipsum Lorem ullamco cupidatat laboris mollit proident. Nisi occaecat enim anim sunt dolore eu ea nostrud velit deserunt.', '', 7, 2, '2022-05-19 12:29:54'),
-(3, 'Ipsum amet voluptate voluptate ipsum ea ipsum ipsum sit ex non. Proident Lorem pariatur non incididunt velit labore velit nisi. Proident elit tempor ad ipsum ex velit. Velit sint officia cillum adipisicing cupidatat occaecat.', '9_2022-05-24_01-00-27_383748353.png', 5, 1, '2022-05-20 17:21:48'),
-(4, 'In dolor voluptate aute ex anim quis excepteur magna fugiat magna dolor. Mollit ex fugiat in quis. Nisi ex amet ad magna eu est exercitation velit dolore anim. Ad nulla labore adipisicing.\r\n', '', 1, 4, '2022-05-20 18:54:16'),
-(5, 'Consequat adipisicing eu id tempor cupidatat eiusmod ex laboris eiusmod aliqua. Qui fugiat laboris tempor dolore. Sit anim mollit nisi nostrud culpa consequat irure est minim. Exercitation est cillum excepteur amet amet magna est.', '', 7, 5, '2022-05-20 19:56:24'),
-(9, 'Consequat culpa ea ea reprehenderit incididunt non. Et minim tempor velit ut velit nostrud incididunt esse ad est consectetur aute. Velit sit incididunt do anim eu consectetur aliqua anim laboris magna.\n', '', 1, 1, '2022-05-21 15:39:40'),
-(29, 'Amet velit ea cillum velit aliqua elit voluptate adipisicing quis irure. Dolore cillum ullamco aliquip adipisicing dolor nulla duis excepteur ea occaecat aute velit enim aliqua.', '9_2022-05-24_01-00-06_5748587.png', 9, 2, '2022-05-23 22:00:06');
+(1, 'I love looking in the mirror and feeling good about what I see.', '', 6, 1, '2025-05-19 12:27:56'),
+(2, 'I love looking in the mirror and feeling good about what I see.', '', 7, 2, '2025-05-19 12:29:54'),
+(4, 'I love looking in the mirror and feeling good about what I see.', '', 1, 4, '2025-05-20 18:54:16'),
+(5, 'I love looking in the mirror and feeling good about what I see.', '', 7, 5, '2025-05-20 19:56:24'),
+(9, 'I love looking in the mirror and feeling good about what I see.', '', 1, 1, '2025-05-21 15:39:40'),
+(29, 'I love looking in the mirror and feeling good about what I see.', '9_2022-05-24_01-00-06_5748587.png', 9, 2, '2022-05-23 22:00:06');
 
 -- --------------------------------------------------------
 
@@ -91,8 +90,8 @@ CREATE TABLE `post_comment` (
 --
 
 INSERT INTO `post_comment` (`post_comment_id`, `post_comment_title`, `post_comment_image`, `post_comment_user_id`, `post_comment_post_id`, `post_comment_date`) VALUES
-(1, 'Amet laborum anim ullamco laborum duis voluptate aliquip aliqua dolore mollit tempor ullamco cillum. Cupidatat commodo quis nulla sunt magna id occaecat id anim labore minim. Officia in officia magna quis anim esse dolor non est aliqua elit.', '', 7, 1, '2022-05-22 19:30:46'),
-(2, 'Minim voluptate ex dolor enim id nulla mollit. Duis enim minim anim ea deserunt fugiat eiusmod ex est tempor.', '', 1, 3, '2022-05-22 19:38:46');
+(1, 'Cheers to the nights that turned into mornings with friends that turned into family.', '', 7, 1, '2025-05-22 19:30:46'),
+(2, 'Cheers to the nights that turned into mornings with friends that turned into family.', '', 1, 3, '2025-05-22 19:38:46');
 
 -- --------------------------------------------------------
 

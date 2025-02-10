@@ -6,7 +6,7 @@
                 <div aria-label="Website Logo" role="img" class="mr-10 flex items-center">
                     <a href="/wt_project/pages/index.php">
                         <!-- Translated brand name -->
-                        <h3 class="text-base text-gray-800 font-bold tracking-normal leading-tight ml-0 md:ml-3 lg:block">Selcuk Dictionary</h3>
+                        <h3 class="text-base text-gray-800 font-bold tracking-normal leading-tight ml-0 md:ml-3 lg:block">Circle Up</h3>
                     </a>
                 </div>
             </div>
@@ -19,8 +19,8 @@
                     <!-- Translated placeholder text -->
                     <input class="border border-gray-100 focus:outline-none focus:border-indigo-700 w-full md:w-80 rounded text-sm text-gray-500 placeholder-gray-600 bg-gray-100 pl-8 py-2" 
                            type="search" 
-                           aria-label="Search dictionary"
-                           placeholder="Search in Selcuk Dictionary..." />
+                           aria-label="Search profiles"
+                           placeholder="Search profiles..." />
                 </div>
             </div>
             <div class="h-full flex items-center justify-end">
